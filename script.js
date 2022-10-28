@@ -12,9 +12,8 @@ document.addEventListener("DOMContentLoaded",
             function(e){
                 let _idText = prompt('새로운 아이디를 입력하세요!')
                 if(!_idText){
-                    alert("꼭 입력해주세요")
-                    let reId = prompt("다시 아이디를 입력해주세요!")
-                    _idText = reId
+                    alert("아이디 변경이 취소되었습니다.")
+                    return _idText = idText.innerHTML
                 }
                 idText.textContent = _idText
             }
@@ -81,9 +80,8 @@ document.addEventListener("DOMContentLoaded",
                         let profile_url = prompt("이미지 url을 입력하세요!")
 
                         if(!profile_url){
-                            alert("꼭 입력해주세요")
-                            let reorder = prompt("다시 URL을 입력해주세요!")
-                            profile_url = reorder
+                            alert("프로필 사진 변경이 취소되었습니다.")
+                            return profile_url = profile_pic.innerHTML
                         }
 
                         profile_pic.setAttribute("src", profile_url)
