@@ -1,14 +1,27 @@
 document.addEventListener("DOMContentLoaded",
-    function(e){
-        let configID = document.querySelector("#id i")
-        let idText = document.querySelector("#id span")
+    function(e){            //계정이름 바꾸는 함수//
+        let configID = document.querySelector("#id i")      //id가 id인 요소에서 i태그 선택//
+        let idText = document.querySelector("#id span")     //id가 id인 요소에서 span태그 선택//
 
-        configID.addEventListener("click",
+        /*변경할 값을 prompt로 받아 _idText라는 변수에 값을 저장
+        만약 _idText에 null값이 들어오면 다시 입력하라는 알림창
+        입력이 되면 그 값을 reId로 할당 후 id 변경*/
+        
+
+        configID.addEventListener("click",      
             function(e){
-                idText.textContent = prompt('새로운 아이디를 입력하세요')
+                let _idText = prompt('새로운 아이디를 입력하세요!')
+                if(!_idText){
+                    alert("꼭 입력해주세요")
+                    let reId = prompt("다시 아이디를 입력해주세요!")
+                    _idText = reId
+                }
+                idText.textContent = _idText
             }
         )
 
+        /*프로필 변경을 위한 내용으로 DOM요소로 각각 ID와 Class를 찾아 받아옴
+        새로운 변수 선언 및 input 태그를 다루겠다는 내용과 입력을 받으면 input를 통해 새로운 값으로 대체*/
         let profileEditButton = document.querySelector("#profile_info button")
         let userInfo = document.querySelector("#userInfo")
         let summary = document.querySelector("#summary")
@@ -47,6 +60,9 @@ document.addEventListener("DOMContentLoaded",
                 }
             }
         )
+
+        /* 프로필 사진 변경에 대한 내용
+        마우스를 올리고 내릴 때 이벤트를 발생시키고 사진을 누르면 URL을 입력받아 src 태그를 변경해 사진 변경*/
         let profile_pic = document.querySelector("#profile_pic .circle_pic")
              profile_pic.addEventListener("mouseover",
                     function(e){
@@ -62,7 +78,15 @@ document.addEventListener("DOMContentLoaded",
 
                 profile_pic.addEventListener("click",
                     function(e){
-                        profile_pic.setAttribute("src", prompt('이미지 URL을 입력해주세요!'))
+                        let profile_url = prompt("이미지 url을 입력하세요!")
+
+                        if(!profile_url){
+                            alert("꼭 입력해주세요")
+                            let reorder = prompt("다시 URL을 입력해주세요!")
+                            profile_url = reorder
+                        }
+
+                        profile_pic.setAttribute("src", profile_url)
                    }
                 )
            
